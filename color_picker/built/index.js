@@ -1,6 +1,23 @@
 "use strict";
-function switchBg(color) {
-    let chosenColor = "white";
+// OPCION 1: LA MEJOR
+/*let botones:HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName("button");
+
+for(let i = 0; i < botones.length; i++) {
+    botones[i].addEventListener("click", () => changeColor(botones[i].id));
+    //botones[i].addEventListener("click", () => changeColor(botones[i].getAttribute("id")?.toString()!));
+}
+function changeColor(id:string){
+    document.body.style.backgroundColor = id;
+}*/
+// OPCION 1: LA MEJOR
+let botones2 = document.getElementsByTagName("button");
+for (let i = 0; i < botones2.length; i++) {
+    botones2[i].addEventListener("click", () => { document.body.style.backgroundColor = botones2[i].id; });
+    //botones[i].addEventListener("click", () => changeColor(botones[i].getAttribute("id")?.toString()!));
+}
+// OTRA OPCIÓN QUE ES LA BASICA
+/*function switchBg(color: string) {
+    let chosenColor: string = "white";
     switch (color) {
         case "R":
             chosenColor = "red";
@@ -16,8 +33,13 @@ function switchBg(color) {
             break;
         default:
             break;
+
     }
+
     document.body.style.backgroundColor = chosenColor;
+
 }
-let redButton = document.getElementById("redButton");
+
+let redButton: HTMLButtonElement = document.getElementById("redButton") as HTMLButtonElement;
 redButton.addEventListener("click", () => switchBg('R'));
+*/

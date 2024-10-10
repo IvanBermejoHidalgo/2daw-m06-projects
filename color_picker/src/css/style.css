@@ -1,0 +1,26 @@
+.color {
+    width: 5.263157895%;
+    height: 500px;
+    float: left;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .shadow {
+    color: rgba(0,0,0,0.84);
+  }
+
+ body, h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+
+  body {
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    -webkit-text-size-adjust: 100%;
+  }
