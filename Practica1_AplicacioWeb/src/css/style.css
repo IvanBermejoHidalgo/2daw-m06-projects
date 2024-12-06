@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    color: #0277bd;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#inputPeVi {
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #80deea;
+    border-radius: 5px;
+    width: 250px;
+    font-size: 16px;
+    background-color: #b2ebf2;
+}
+
+button {
+    padding: 12px 18px;
+    background-color: #0288d1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 250px;
+}
+
+button:hover {
+    background-color: #0277bd;
+}
+
+#listaclientes {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#listaclientes li {
+    background-color: #b3e5fc;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    margin: 10px;
+    background-color: #039be5;
+    width: 250px;
+}
+
+button:hover {
+    background-color: #0288d1;
+}
+
+div.boton-categorias {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+table {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table tr {
+    background-color: #e1f5fe;
+}
+
+table td {
+    padding: 10px;
+    border: 1px solid #81d4fa;
+}
+
+table th {
+    background-color: #0288d1;
+    color: white;
+    padding: 10px;
+}

@@ -1,57 +1,107 @@
 // variable constante para añadir clientes
-const clients = [
-    { name: "Iván", email: "ibermejo@elpuig.xeill.net" },
-    { name: "Sara", email: "sessakkal@elpuig.xeill.net" },
-    { name: "Said", email: "selmorabiti@elpuig.xeill.net" },
-    { name: "Yassin", email: "ymenana.net" },
-];
+const nuevosClientes : Map<string, string> = new Map<string, string>([
+    ["Iván","ibermejo@elpuig.xeill.net"],
+    ["Sara","sessakkal@elpuig.xeill.net"],
+    ["Yassin","ymenana@elpuig.xeill.net"],
+    ["Said","selmorabiti.net"]
+]);
 
-// añadir clientes desde la página web
-function añadirCliente(event: Event): void {
-    event.preventDefault(); // Prevenir que el formulario se envíe y recargue la página
+// Variables de VideoJoc y Peliculas, la de VideoJoc la he hecho con un Map porque tiene más de un valor
+// mientras que la de Peliculas solo tiene un valor, entonces he decidido hacerlo con un array normal
+let VideoJoc : Map<string, string> = new Map<string, string>();
+let Peliculas: string[] = [];
 
-    let name = (document.getElementById('nombreCliente') as HTMLInputElement).value;
-    let email = (document.getElementById('clienteCorreo') as HTMLInputElement).value;
-
-    if (validateEmail(email)) {
-        clients.push({ name, email });
-        CargaClientes();
-        (document.getElementById('nombreCliente') as HTMLInputElement).value = '';
-        (document.getElementById('clienteCorreo') as HTMLInputElement).value = '';
-
-    }
-
-    //clients.push({ name, email });
-
-    //CargaClientes();
-}
-
-// variable constante para validar si el correo cumple con el formato correcto
-const validateEmail = (email: string): boolean => {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return regex.test(email);
-};
 
 // funcion para cargar los clientes en el html
-function CargaClientes(): void {
-    const listElement = document.getElementById('listaclientes') as HTMLUListElement;
-    
-    listElement.innerHTML = '';
+const CargaClientes = (clientList:Map<string,string>) => {
+    const listElement:HTMLUListElement = document.getElementById('listaclientes') as HTMLUListElement; // Se lee la lista en la cual se van a añadir los clientes
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    clients.forEach((client) => {
-        if (validateEmail(client.email)) {
+    clientList.forEach((email, name) => {
+        if (regex.test(email)) { // Comprobar que el email tiene el formato correcto
             const li = document.createElement('li');
-            li.textContent = `${client.name} - ${client.email}`;
+            li.textContent = `${name} - ${email}`;
             listElement.appendChild(li);
         }
     });
+};
+
+
+// Para llevar la sobrecarga correctamente
+function añadirPeliculaVideojoc(): void;
+function añadirPeliculaVideojoc(valor1: string, valor2?: string): void;
+
+function añadirPeliculaVideojoc(valor1?: string, valor2?: string) {
+
+    if (valor1 == null && valor2 == null) { // Si se llama al metodo desde la página web se hace lo siguiente
+        let input:string = String((<HTMLInputElement> document.getElementById("inputPeVi")).value); // Leer el input por el que se va a poner una pelicula o un videojuego
+        let separarInput: string[] = input.split(","); // Variable para separar por ',' el input
+
+        if (separarInput.length == 2) { // Si el separar tiene dos posiciones se añadirá al Map VideoJoc
+             VideoJoc.set(separarInput[0], separarInput[1]);
+             input = "";
+        } else if (separarInput.length == 1) { // Si solo tiene una posición se añadirá al array de Peliculas
+            Peliculas.push(separarInput[0]);
+       } else { // Sino saldrá una alerta para indicar que no se ha puesto correctamente el input
+        alert("LO HAS PUESTO MAL")
+       }
+       // Para coger los datos desde el código
+    } else if (valor1 != null && valor2 != null) { // Si tiene los dos valores se añadirá a VideoJoc 
+        VideoJoc.set(valor1,valor2);
+
+    } else if (valor1 != null && valor2 == null) { // Si solamente tiene un valor se añadirá a Peliculas
+        Peliculas.push(valor1);
+
+    }
+}
+
+
+function botonPeliculasJuegos(numero:number) { // Funcion para que cuando le des a un botón o otro te muestra la tabla
+    let tablas: HTMLTableElement = document.getElementById("tabla") as HTMLTableElement; // Lee donde se va a implementar la tabla
+    
+    if (numero == 1) { // Si es el 1 (se pone en el html el numero) crea la tabla de videojuegos
+        tablas.innerHTML = `<tr><th>Nom</th><th>Plataforma</th><tr>`;
+        // implementa las lineas en ta labla
+        VideoJoc.forEach((nom, plataforma) => {
+            let crearLinea = document.createElement("tr");
+            crearLinea.innerHTML = 
+                    `<td>${nom}</td>
+                    <td>${plataforma}</td>`;
+            tablas.appendChild(crearLinea);
+        });
+
+    } else if (numero == 2) { // Si es el 2 (se pone en el html el numero) crea la tabla de peliculas
+        tablas.innerHTML = `<tr><th>Nom</th><tr>`;
+        // implementa las lineas en ta labla
+        Peliculas.forEach((nom) => {
+            let crearLinea = document.createElement("tr");
+            crearLinea.innerHTML = `<td>${nom}</td>`;
+            tablas.appendChild(crearLinea);
+        });
+
+    } else if (numero == 3) { // Si es el 3 (se pone en el html el numero) crea la tabla de peliculas y videojuegos a la vez 
+        tablas.innerHTML = `<tr><th>Nom</th><th>Plataforma</th><tr>`;
+        // implementa las lineas en ta labla de videojuegos
+        VideoJoc.forEach((nom, plataforma) => {
+            let crearLinea = document.createElement("tr");
+            crearLinea.innerHTML = 
+                    `<td>${nom}</td>
+                    <td>${plataforma}</td>`;
+            tablas.appendChild(crearLinea);
+        });
+        // implementa las lineas en ta labla de peliculas
+        Peliculas.forEach((nom) => {
+            let crearLinea = document.createElement("tr");
+            crearLinea.innerHTML = `<td>${nom}</td><td></td>`;
+            tablas.appendChild(crearLinea);
+        });
+    }
 }
 
 // funcion que se ejecuta al iniciar la página web
 function init() {
-    CargaClientes();
-
-    const form = document.getElementById('añadirCliente') as HTMLFormElement;
-    form.addEventListener('submit', añadirCliente);
+    CargaClientes(nuevosClientes); // Inicia los clientes para que se muestren nada más entrar en la página web
+    añadirPeliculaVideojoc("Fortnite", "Epic Games"); // Se hace un input, este se añadirá a VideoJocs
+    añadirPeliculaVideojoc("Perdiendo el Norte"); // Se hace un input, este se añadirá a Peliculas
     
 }

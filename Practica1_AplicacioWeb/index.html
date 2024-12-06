@@ -4,41 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
     <title>Pràctica 1: Aplicació Web</title>
 </head>
 <body onload="init()"> <!-- Carga la funcion init al cargar la página -->
-    <h1>Pràctica 1: Aplicació Web</h1>
-    <h2>Introduce Clientes</h2>
-    <form id="añadirCliente"> <!-- Formulario para que desde la página se puedan añadir clientes -->
-        <label for="nombreCliente">Nombre:</label>
-        <input type="text" id="nombreCliente" required>
-        <label for="clienteCorreo">Email:</label>
-        <input type="email" id="clienteCorreo" required>
-        <button type="submit">Introducir Cliente</button>
-    </form>
 
     <h2>Lista de Clientes</h2>
     <ul id="listaclientes"></ul> <!-- Dentro de esta lista se printaran los clientes añadidos -->
 
+    <!-- Formulario para envíar el input de pelicualas o videojuegos -->
+    <form id="form">
+        <input type="text" id="inputPeVi" required />
+        <button type="button" onclick="añadirPeliculaVideojoc()">Añadir</button>
+    </form>
 
+    <!-- los botones para mostrar la tabla de peliculas, videojuegos o todo junto -->
+    <div class="boton-categorias">
+        <button type="button" onclick="botonPeliculasJuegos(1)">VideoJuegos</button>
+        <button type="button" onclick="botonPeliculasJuegos(2)">Peliculas</button>
+        <button type="button" onclick="botonPeliculasJuegos(3)">Todo</button>
+    </div>
 
-
-    <!--
-    1) Definir input y el boton
-    2) Definir array videojuegos y peliculas
-    3) Recuperar los datos
-    4) Crear sobrecarga de afegirProducte
-        Via 1, sense parametres de entrada
-        Via 2, dos parametros, obligatorio y opcional
-    5) Definir la implementacion
-        Dos parametros de entrada, string? y string?
-        Defineremos dos vias para ir videojuegos o peliculas
-    6) Añadir al onload afegirProductes("Toy Story")
-                        afegirProductes("Halo","XboX")
-    
-    
-    -->
-
+    <table id="tabla">
+        <tr></tr>
+    </table>
 
 </body>
 
