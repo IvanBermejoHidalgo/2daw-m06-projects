@@ -50,7 +50,7 @@ function botonPeliculasJuegos(numero) {
     if (numero == 1) { // Si es el 1 (se pone en el html el numero) crea la tabla de videojuegos
         tablas.innerHTML = `<tr><th>Nom</th><th>Plataforma</th><tr>`;
         // implementa las lineas en ta labla
-        VideoJoc.forEach((nom, plataforma) => {
+        VideoJoc.forEach((plataforma, nom) => {
             let crearLinea = document.createElement("tr");
             crearLinea.innerHTML =
                 `<td>${nom}</td>
@@ -70,7 +70,7 @@ function botonPeliculasJuegos(numero) {
     else if (numero == 3) { // Si es el 3 (se pone en el html el numero) crea la tabla de peliculas y videojuegos a la vez 
         tablas.innerHTML = `<tr><th>Nom</th><th>Plataforma</th><tr>`;
         // implementa las lineas en ta labla de videojuegos
-        VideoJoc.forEach((nom, plataforma) => {
+        VideoJoc.forEach((plataforma, nom) => {
             let crearLinea = document.createElement("tr");
             crearLinea.innerHTML =
                 `<td>${nom}</td>
