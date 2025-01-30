@@ -1,73 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercici 3: Creació, definició i ús d’objectes, mètodes i propietats</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Classes i objectes</title>
+    <script src="./dist/index.js" type="module"></script>
 </head>
-<!--body-->
 
-    <!-- EJERCICIO 1 -->
-    <!--     
-    <input type="text" id="addCategory" />
-    <input type="button" value="Enviar" id="buttonCategory" onclick="enviarCategoria()"/>
+<body onload="inicialitzacio()">
+    <section>
+        <input type="text" id="plat" placeholder="Plat i preu">
+        <button onclick="afegirPlat()">Afegir</button>
+        <input type="text" id="client" placeholder="Client (Nom,Cognoms,DNI,Targeta)">
+        <button onclick="afegirClient()">Afegir</button>
+        <input type="text" id="comanda" placeholder="Comanda(plats)">
+        <button onclick="afegirComanda()">Afegir</button>
+        <input type="text" id="comandaClient" placeholder="Comanda,DNI Client">
+        <button onclick="afegirComandaClient()">Afegir</button>
+    </section>
 
-    <br>
-    <br>
-    <br>
+    <div class="container">
+        <section id="restaurant">
+        </section>
 
-    <input type="button" value="Mostrar Categorias" id="showCategory" onclick="mostrarCategorias()"/>
-    <p id="infoCategories"></p> 
-    -->
+        <section id="clients">
+        </section>
 
+        <section id="comandes">
+        </section>
+    </div>
 
-
-    <!-- EJERCICIO 2  y 3-->
-    <!-- <input type="text" id="producte" />
-    <input type="number" id="quantitatProducte" />
-    <input type="button" value="Afegir Producte" id="afegirProducte" onclick="afegirProductes()" />
-    <input type="button" value="Eliminar Producte" id="eliminarProducte" onclick="eliminarProductes()" />
-    <input type="button" value="Mostrar Producte" id="mostrarProducte" onclick="mostrarProductes()" />
-
-    <p id="productos"></p>  -->
-    
-
-
-
-    <!-- EJERCICIO 4 -->
-    <!-- <label>Escoge el Producto</label>
-    <input type="text" id="escogerProducto" />
-    <br>
-    <br>
-    <label>Pone el precio al producto</label>
-    <input type="number" id="precioProducto" />
-    <br>
-    <br>
-    <input type="button" value="Poner a la venta" id="buttonVender" onclick="Vender()" /> -->
-
-
-
-    <!-- EJERCICIO 5 -->
-    <!-- <input type="button" value="Mostrar Beneficis" id="listarVender" onclick="mostrarBeneficis()" />
-    <p id="beneficis"></p> -->
-
-
-
-    
-<!-- DOCUMENTO 2 -->
-<body onload="execucions()">
-    <h2>Temperatures</h2>
-    <table id="taulaTemperatures">
-        <tr>
-            <th>Temperatura Mitjana</th>
-            <th>Temperatura Màxima</th>
-            <th>Temperatura Mínima</th>
-        </tr>
-    </table>
-    
+    <section>
+        <input type="text" id="dniClient" placeholder="DNI client">
+        <button onclick="mostrarComandesClient()">Mostrar comandes</button>
+    </section>
+    <section id="comandesClient">
+        
+    </section>
 
 </body>
 
-<script src="built/index.js"></script>
 </html>

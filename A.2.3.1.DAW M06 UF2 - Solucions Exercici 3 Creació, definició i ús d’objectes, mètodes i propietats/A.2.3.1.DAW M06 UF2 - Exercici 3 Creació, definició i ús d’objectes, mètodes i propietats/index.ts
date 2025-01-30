@@ -91,6 +91,7 @@ function inicialitzacio(): void {
   mostrarComandes(llistaComandes);
 }
 
+
 //Mostra l'objecte literal del restaurant, especifiquem que serà de tipus restaurant
 function mostrarRestaurant(rest?: typeof restaurant): void {
 
